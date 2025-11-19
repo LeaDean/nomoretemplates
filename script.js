@@ -1,9 +1,9 @@
-// Mobile menu
+// Mobile menu toggle
 document.querySelector('.mobile-toggle').addEventListener('click', () => {
     document.querySelector('.nav').classList.toggle('active');
 });
 
-// Handwritten quotes
+// Handwritten quotes animation
 document.addEventListener('DOMContentLoaded', () => {
     const quotes = document.querySelectorAll('.handwritten');
     let current = 0;
@@ -17,19 +17,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Smooth scroll for ALL # links (this fixes the buttons)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Form fake success (replace with FormSubmit later)
-document.querySelector('form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Thank you! We\'ll be in touch within 24 hours 🎉');
-});
+// NO FORM LISTENER ANYMORE – FormSubmit handles everything perfectly now
