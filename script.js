@@ -21,28 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Form handling - Updated for better mobile UX (prevent default redirect, show message)
+// Form handling
 document.getElementById('visionForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Stop redirect for instant feedback
-    const form = this;
-    const formData = new FormData(form);
-    
-    fetch(form.action, {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Thank you! We\'ll email you within 24 hours to start your free build.');
-            form.reset(); // Clear form
-        } else {
-            alert('Something went wrong—try again or email us directly.');
-        }
-    })
-    .catch(error => {
-        alert('Network issue—please resubmit or email leadeanguitar@gmail.com');
-        console.error('Form error:', error);
-    });
+  e.preventDefault();
+  const form = this;
+  const formData = new FormData(form);
+
+  fetch(form.action, {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+    if (response.ok) {
+      alert("Thank you! We'll email you within 24 hours.");
+      form.reset();
+      window.location.href = form.elements['_next'].value;  // To thanks.html
+    } else {
+      alert('Something went wrong—try again or email directly.');
+    }
+  })
+  .catch(error => {
+    alert('Network issue—try again.');
+    console.error('Error:', error);
+  });
 });
 
 // Smooth scroll for all # links
